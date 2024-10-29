@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap');
+
+:root {
+    --default-border-color: #454545;
+    --gap-left: 30px;
+    --gap-right: 30px;
+}
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(25, 23, 33, 255);
+    user-select: none;
+    font-family: 'Barlow', sans-serif;
+}
+
+.loading-screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(25, 23, 33, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+}
+
+#codesphere-logo {
+    width: 150px;
+    top: 5px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#top-bar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: var(--gap-left);
+    padding-right: var(--gap-right);
+    color: #d7d7d7;
+}
+
+#top-bar #left {
+    width: 125px;
+    height: 20px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all .20s linear;
+    background-color: rgba(70, 70, 70, 0.3);
+}
+
+#top-bar #left:active {
+    color: rgb(168, 168, 168) !important;
+}
+
+#top-bar #left img {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#top-bar #right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#top-bar #right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    transition: all .10s linear;
+}
+
+#top-bar #right img:active {
+    opacity: 0.8;
+}
+
+#options {
+    height: 60px;
+    color: white;
+    padding-left: var(--gap-left);
+    padding-right: var(--gap-right);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#options .option {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    color: rgb(192, 192, 192);
+    background-color: rgba(61, 61, 61, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all .10s linear;
+}
+
+#options .option.active {
+    z-index: 1;
+    position: relative;
+    color: rgb(225, 225, 225);
+    background-color: rgba(144, 144, 144, 0.5);
+}
+
+#options .option:active:not(.active) {
+    color: rgb(215, 215, 215);
+    background-color: rgb(111, 111, 111, 0.3) !important;
+    scale: 0.97;
+}
+
+#options .option.active::after {
+    content: '';
+    position: absolute;
+    margin-top: 54px;
+    z-index: 0;
+    border-bottom: 10px solid rgba(144, 144, 144, 0.5);
+    border-left: 5px solid rgba(25, 23, 33, 255);
+    border-right: 5px solid rgba(25, 23, 33, 255);
+    rotate: 180deg;
+}
+
+#search-section {
+    color: #c4c1da;
+    display: flex;
+    justify-content: space-between;
+    padding-left: var(--gap-left);
+    padding-right: var(--gap-right);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#search-section #right {
+    width: calc(100% - 230px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+#search-section #right input {
+    width: calc(100% - 210px);
+    height: 10px;
+    background-color: #191721;
+    border: 2px solid rgb(91, 91, 91, 0.5);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    transition: all .20s linear;
+    font-family: 'Barlow', sans-serif;
+    background-image: url('/images/search-icon.png');
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: 5px center;
+    padding-left: 40px;
+    font-size: 16px;
+}
+
+
+#search-section #right input:focus {
+    border-color: blueviolet;
+    box-shadow: 0 0 10px blueviolet;
+}
+
+#new-workspace-btn {
+    height: 25px;
+}
+
+#workspaces {
+    color: white;
+    overflow: auto;
+    margin-left: var(--gap-left);
+    margin-right: var(--gap-right);
+}
+
+#workspaces table {
+    width: 100%;
+}
+
+#workspaces th,
+#workspaces td {
+    width: fit-content;
+    padding-left: 30px;
+    padding-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+    text-wrap: nowrap;
+    border: 0;
+    color: rgb(220, 220, 220);
+}
+
+#workspaces tr td:nth-child(1) {
+    font-weight: bolder;
+}
+
+#workspaces tr td:nth-child(1),
+#workspaces tr td:nth-child(2) {
+    cursor: pointer;
+    transition: all .20s linear;
+}
+
+#workspaces tr td:nth-child(1):active,
+#workspaces tr td:nth-child(2):active {
+    color: rgb(92, 92, 92) !important;
+}
+
+#workspaces td {
+    text-align: center;
+}
+
+#workspaces tr:first-child {
+    background-color: black;
+}
+
+.open-more-options {
+    border-radius: 5px;
+}
+
+.btn {
+    width: fit-content;
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all .10s linear;
+}
+
+.btn:active {
+    scale: 0.97;
+    background-color: rgb(117, 37, 192);
+}
+
+.uptime-div {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    color: rgb(0, 255, 0);
+}
+
+.bars {
+    display: flex;
+    gap: 2px;
+}
+
+.bar {
+    width: 5px;
+    height: 100%;
+    background-color: rgb(0, 255, 0);
+    border-radius: 10px;
+    transition: all .20s linear;
+}
+
+#workspace-options {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(25, 23, 33, 255);
+    color: white;
+    z-index: 999;
+    display: none;
+    border-radius: 5px;
+    border: 1px solid rgb(74, 54, 93);
+    overflow: hidden;
+}
+
+#workspace-options .option {
+    width: calc(100% - 10px);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    transition: all .10s linear;
+    font-size: 15px;
+}
+
+#workspace-options .option:active {
+    background-color: rgba(72, 72, 72, 0.5) !important;
+    cursor: pointer;
+}
+
+#workspace-options .option:last-child {
+    color: red;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+#options::-webkit-scrollbar,
+#workspaces::-webkit-scrollbar {
+    height: 5px;
+}
+
+#options::-webkit-scrollbar-thumb,
+#workspaces::-webkit-scrollbar-thumb {
+    height: 5px;
+    background-color: grey;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+hr {
+    border-color: var(--default-border-color);
+}
+
+a {
+    all: unset;
+}
+
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width:700px) {
+    :root {
+        --gap-left: 10px;
+        --gap-right: 10px;
+    }
+
+    #search-section h1 {
+        font-size: 25px;
+    }
+
+    #new-workspace-btn span:nth-child(2) {
+        display: none;
+    }
+
+    #search-section #right {
+        width: calc(100% - 170px);
+    }
+
+    #search-section #right input {
+        width: calc(100% - 100px);
+    }
+
+    #workspace-options {
+        height: fit-content;
+        width: 100%;
+        top: unset;
+        bottom: -150px;
+    }
+
+    #codesphere-logo {
+        display: none;
+    }
+}
+
+@media (pointer:fine) {
+    #top-bar #left:hover {
+        background-color: rgb(128, 128, 128, 0.4);
+        color: white;
+    }
+
+    #options .option:hover:not(.active) {
+        background-color: rgb(128, 128, 128, 0.4);
+    }
+
+    .btn:hover {
+        background-color: rgb(150, 51, 242);
+    }
+
+    .bar:hover {
+        scale: 1.5;
+    }
+
+    .open-more-options:hover {
+        background-color: rgb(255, 255, 255, 0.2);
+    }
+
+    #workspaces tr td:nth-child(1):hover,
+    #workspaces tr td:nth-child(2):hover {
+        color: rgb(255, 255, 255);
+    }
+
+    #workspace-options .option:hover {
+        background-color: rgb(128, 128, 128, 0.5);
+        cursor: pointer;
+    }
+}

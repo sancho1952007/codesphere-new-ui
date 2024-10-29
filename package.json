@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "web": "lt --port 8080 --subdomain codesphere",
+        "dev": "http-server -c-10"
+    }
+}

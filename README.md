@@ -1,2 +1,2 @@
-# codesphere-new-ui
- A new & improved UI for codesphere.com
+# New Codesphere UI
+Check it out at https://sancho1952007.github.io/codesphere-new-ui
